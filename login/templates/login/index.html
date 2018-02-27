@@ -20,7 +20,9 @@
        </button>
       </form>
       {%if error %}
-        <p class="error center-align">{{error}}</p>
+      <div class="center-align">
+        <p class="error panel-heading"><i class="material-icons">error</i>{{error}}</p>
+      </div>
       {% endif %}
     </div>
     <div class="col s3">
