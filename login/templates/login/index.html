@@ -3,31 +3,29 @@
 {% block content %}
 
 <div class="container">
-  <div class="row">
-
-  </div>
-  <div class="row">
-    <div class="col s3">
-
+  <hgroup>
+    <h1>AMAZON FLEX HUB</h1>
+    <h5>By Makeven Yan</h5>
+  </hgroup>
+  <form action="" id="login" method="POST" id="login-form">
+    {% csrf_token %}
+    <div class="group">
+      <label>Email</label>
+      <input type="text" name="email" placeholder="email"/>
     </div>
-    <div class="col s6">
-      <form action="" id="login" method="POST" id="login-form" class="center-align">
-        {% csrf_token %}
-        <input name="email" type="text" placeholder="email" />
-        <input name="password" type="password" placeholder="password" />
-        <button class="btn waves-effect waves-light" type="submit" name="login-form">Submit
-         <i class="material-icons right">send</i>
-       </button>
-      </form>
-      {%if error %}
-      <div class="center-align">
-        <p class="error panel-heading"><i class="material-icons">error</i>{{error}}</p>
-      </div>
-      {% endif %}
+    <div class="group">
+      <label>Password</label>
+      <input type="password" name="password" placeholder="password" />
     </div>
-    <div class="col s3">
-    </div>
-  </div>
+    <button type="submit" class="button buttonBlue" name="login-form">Submit
+      <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+    </button>
+  </form>
 </div>
+
+<footer><a href="http://www.polymer-project.org/" target="_blank"><img src="https://www.polymer-project.org/images/logos/p-logo.svg"></a>
+  <p>You Gotta Love <a href="http://www.polymer-project.org/" target="_blank">Google</a></p>
+</footer>
+
 
 {% endblock %}
