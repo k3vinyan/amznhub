@@ -5,7 +5,7 @@ import requests, re
 
 URLS = {
     "SEARCH": 'https://www.amazonlogistics.com/comp/packageSearch',
-    "SIGN": "https://www.amazonlogistics.com/ap/signin",
+    "SIGNIN": "https://www.amazonlogistics.com/ap/signin",
     "BASE": "https://www.amazonlogistics.com/"
 }
 
@@ -51,7 +51,7 @@ searchForm = {
     'downloadToken': "",
     'downloadToken': "",
     'ec_i':"ShipmentListTable",
-    'ShipmentListTable_crd':"2000",
+    'ShipmentListTable_crd':"5000",
     'ShipmentListTable_p':"1",
     'ShipmentListTable_s_merchantId':"",
     'ShipmentListTable_a_manifestTrackingId':"shipmentTrackingId",
@@ -66,6 +66,7 @@ searchForm = {
 def getAmazonSession(username, password):
     session = requests.Session()
     s = session.get(URLS['SEARCH'], headers=headers)
+
     BSObj = BeautifulSoup(s.text, 'lxml')
     hiddenInput = BSObj.select('input[type="hidden"]')
     params = {}
@@ -78,5 +79,6 @@ def getAmazonSession(username, password):
     params['email'] = username
     params['password'] = password
 
-    session.post(URLS['SEARCH'], data=params, headers=headers)
-    return session
+    s = session.post(URLS['SIGNIN'], data=params, headers=headers)
+
+    return s
