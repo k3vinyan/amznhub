@@ -9,13 +9,8 @@ URLS = {
     "BASE": "https://www.amazonlogistics.com/"
 }
 
-user = {
-    'email': "",
-    'password': ""
-}
-
-s = {
-    'session': ""
+userSession = {
+    "session": None
 }
 
 headers = {
@@ -63,6 +58,7 @@ searchForm = {
     'action':"ajaxSearch"
 }
 
+#get session from comp
 def getAmazonSession(username, password):
     session = requests.Session()
     s = session.get(URLS['SEARCH'], headers=headers)
@@ -80,5 +76,25 @@ def getAmazonSession(username, password):
     params['password'] = password
 
     s = session.post(URLS['SIGNIN'], data=params, headers=headers)
+    userSession['session'] = s
 
     return s
+
+#check if response return correct page since 200 status code still returnn
+#for correct and incorrect email/password
+def isAuthSession():
+    try:
+        session = userSession['session']
+        if session == None:
+            return False
+    except:
+        return False
+
+    BSObj = BeautifulSoup(session.text, 'lxml')
+    createAccountSubmitId = BSObj.find(id="createAccountSubmit")
+
+    #return false if incorrect html response
+    if createAccountSubmitId:
+        return False
+    else:
+        return True

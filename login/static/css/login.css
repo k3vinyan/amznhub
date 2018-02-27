@@ -4,11 +4,17 @@
 }
 .error {
   color: #D32F2F;
+
+}
+
+.error > p {
+  font-weight: bold;
 }
 
 #logo-container {
   height: 40px;
   margin: 12px;
+
 }
 
 .logo {

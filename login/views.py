@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from bs4 import BeautifulSoup
-from Hub import session
+from Hub import Session
 
 #login page
 def index(request):
@@ -16,25 +16,19 @@ def index(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
+        s = Session.getAmazonSession(email, password)
 
-        session.user['email'] = email
-        session.user['password'] = password
-
-        s = session.getAmazonSession(session.user['email'], session.user['password'])
-
-        #check if response return correct page since 200 status code still returnn
-        #for correct and incorrect email/password
-        BSObj = BeautifulSoup(s.text, 'lxml')
-        createAccountSubmitId = BSObj.find(id="createAccountSubmit")
-        if createAccountSubmitId:
-            print True
-            return render(request, 'login/index.html', {'error': 'email or password is incorrect'})
+        if Session.isAuthSession():
+            return redirect('home')
         else:
-            return HttpResponse(s.text)
+            return render(request, 'login/index.html', {'error': 'email or password is incorrect'})
+
 
 #home/hub page
 def home(request):
 
-    #render homepage
     if request.method == 'GET':
-        return HttpResponse("cat")
+        if Session.isAuthSession():
+            return render(request, 'login/home.html')
+        else:
+            return redirect('index')

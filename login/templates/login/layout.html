@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   {% load staticfiles %}
   <link href="{% static 'css/login.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/home.css' %}" rel="stylesheet" />
   <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <title>Flex Hub</title>
 </head>
@@ -21,7 +22,7 @@
         </div>
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="../home">Home</a></li>
+        <li><a href="/login/home">Home</a></li>
         <li><a href="../operations/add_drivers">Drivers</a></li>
         <li><a href="../operations/addRoutes">Routes</a></li>
         <li><a href="../operations/checkin">Checkin</a></li>
