@@ -14,7 +14,12 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo"> AMAZON</a>
+      <a href="#" class="brand-logo">
+        {% load staticfiles %}
+        <div id="logo-container">
+          <img class="logo" src="{% static 'images/logo3.png' %}" alt="logo" />
+        </div>
+      </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="../home">Home</a></li>
         <li><a href="../operations/add_drivers">Drivers</a></li>

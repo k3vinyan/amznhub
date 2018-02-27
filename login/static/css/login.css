@@ -6,8 +6,16 @@
   color: #D32F2F;
 }
 
-input.test {
-   width: 50%;
+#logo-container {
+  height: 40px;
+  margin: 12px;
+}
+
+.logo {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  display: block;
 }
 
 .nav-wrapper {
