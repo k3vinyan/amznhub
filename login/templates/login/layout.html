@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="sytlesheet" type="text/css" href="{% static 'operations/checking.css' %}" >
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <title>Flex Hub</title>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="../home">Home</a></li>
+        <li><a href="../operations/add_drivers">Drivers</a></li>
+        <li><a href="../operations/addRoutes">Routes</a></li>
+        <li><a href="../operations/checkin">Checkin</a></li>
+        <li><a href="../operations/laneCaptain">Assign Routes</a></li>
+        <li><a href="../operations/checkout">Checkout</a></li>
+      </ul>
+    </div>
+  </nav>
+  {% block content %}
+  {% endblock %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</body>
+</html>
